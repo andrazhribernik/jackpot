@@ -5,7 +5,7 @@ This is a solution for Celtra challenge.
 
 Installation
 ============
-1. Install python
+1. Install python & pip
 2. pip install virtualenv
 3. virtualenv -p /usr/bin/python2.7 venv
 4. source venv/bin/activate

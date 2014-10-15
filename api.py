@@ -12,14 +12,13 @@ class JackpotApi:
 
     def call(self, param, pull=False):
         url = "{}/{}".format(self.url, param)
-        req = Request(url)
-        """
         try:
-            response = urlopen(req)
+            response = urlopen(url)
         except URLError as e:
             if hasattr(e, 'reason'):
                 print 'We failed to reach a server.'
                 print 'Reason: ', e.reason
+                print url
             elif hasattr(e, 'code'):
                 print 'The server couldn\'t fulfill the request.'
                 print 'Error code: ', e.code
@@ -30,6 +29,7 @@ class JackpotApi:
         """
         response = urlopen(req)
         return int(response.read())
+        """
 
     def pull(self, bandit, sequence_n):
         return self.call("{}/{}".format(bandit, sequence_n), pull=True)

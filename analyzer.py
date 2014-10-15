@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-REPEAT = 100
+REPEAT = 10000
 REPEAT_CONSTANT = 50000
 
 
@@ -8,16 +8,17 @@ def analyse(api):
     machines = []
     for machine in range(api.machines):
         results = []
-        for pull in range(api.pulls):
+        for pull in range(0, api.pulls, 1000):
             success = 0
             for i in range(REPEAT):
                 if api.pull(machine + 1, pull + 1):
                     success += 1
+            print "%d: %f"% (pull, success / float(REPEAT))
             results.append(success / float(REPEAT))
         machines.append(results)
 
     for i, m in enumerate(machines):
-        plt.plot(range(api.pulls), m, label="machine %d" % (i + 1))
+        plt.plot(range(0, api.pulls, 1000), m, label="machine %d" % (i + 1))
     plt.legend(loc=2)
     plt.show()
 
