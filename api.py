@@ -10,26 +10,26 @@ class JackpotApi:
         self.machines = self.call(MACHINES)
         self.pulls = self.call(PULLS)
 
-    def call(self, param, pull=False):
+    def call(self, param):
         url = "{}/{}".format(self.url, param)
-        try:
-            response = urlopen(url)
-        except URLError as e:
-            if hasattr(e, 'reason'):
-                print 'We failed to reach a server.'
-                print 'Reason: ', e.reason
-                print url
-            elif hasattr(e, 'code'):
-                print 'The server couldn\'t fulfill the request.'
-                print 'Error code: ', e.code
-            if pull: return 0
-            else: exit()
-        else:
-            return int(response.read())
-        """
-        response = urlopen(req)
-        return int(response.read())
-        """
+        consecutive_err = 0
+        while True:
+            try:
+                response = urlopen(url)
+                return int(response.read())
+            except URLError as e:
+                if hasattr(e, 'reason'):
+                    print 'We failed to reach a server.'
+                    print 'Reason: ', e.reason
+                    print url
+                elif hasattr(e, 'code'):
+                    print 'The server couldn\'t fulfill the request.'
+                    print 'Error code: ', e.code
+                consecutive_err += 1
+                if consecutive_err > 5:
+                    print consecutive_err
+                    exit()
+
 
     def pull(self, bandit, sequence_n):
-        return self.call("{}/{}".format(bandit, sequence_n), pull=True)
+        return self.call("{}/{}".format(bandit, sequence_n))

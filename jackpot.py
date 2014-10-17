@@ -9,9 +9,9 @@ import sys
 
 def simulate(api):
     #algo = EpsilonGreedy(0.2, [], [])
-    algo = UCB1([], [])
+    #algo = UCB1([], [])
     #algo = UCB2(0.1, [], [])
-    #algo = RPM([], [])
+    algo = RPM([], [])
     algo.initialize(api.machines)
     arm_pulls = [0 for i in range(api.machines)]
     reward_sum = 0
