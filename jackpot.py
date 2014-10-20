@@ -34,5 +34,3 @@ if __name__ == "__main__":
 
     api = JackpotApi(sys.argv[1])
     print simulate(api)
-    #analyzer.analyse_constant(api)
-    #analyzer.analyse(api)

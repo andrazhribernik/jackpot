@@ -15,8 +15,8 @@ def analyse(api, interval=1000, repeat=1000):
             for i in range(repeat):
                 if api.pull(machine + 1, pull + 1):
                     success += 1
-            print "%d: %f"% (pull, success / float(REPEAT))
-            results.append(success / float(REPEAT))
+            print "%d: %f"% (pull, success / float(repeat))
+            results.append(success / float(repeat))
         machines.append(results)
 
     results = "%s / %d / %d \n" % (api.url, interval, repeat)
