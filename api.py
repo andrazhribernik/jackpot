@@ -26,9 +26,11 @@ class JackpotApi:
                     print 'The server couldn\'t fulfill the request.'
                     print 'Error code: ', e.code
                 consecutive_err += 1
-                if consecutive_err > 5:
-                    print consecutive_err
-                    exit()
+            except:
+                consecutive_err += 1
+            if consecutive_err > 5:
+                print "Program has been stopped due to max. number of consecutive errors was exceeded."
+                exit()
 
 
     def pull(self, bandit, sequence_n):

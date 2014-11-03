@@ -34,6 +34,8 @@ class RPM():
 class RPMTime():
     def __init__(self, history):
         self.history = history
+        self.counts = []
+        self.values = []
         return
 
     def initialize(self, n_arms):

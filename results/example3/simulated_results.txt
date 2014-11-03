@@ -15,3 +15,10 @@ ucb2 a=0.3: 174.6
 ucb2 a=0.5: 175.05
 ucb2 a=0.7: 169.6
 rpm: 181.4
+
+repeat: 20
+rpm: 181.75
+rpmTime: 0.1: 169.45
+rpmTime: 0.15: 172.05
+rpmTime: 0.2: 171.9
+rpmTime: 0.3: 176.95
