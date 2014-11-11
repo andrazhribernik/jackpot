@@ -29,9 +29,8 @@ class JackpotApi:
             except:
                 consecutive_err += 1
             if consecutive_err > 5:
-                print "Program has been stopped due to max. number of consecutive errors was exceeded."
+                print "Program has been stopped due to max. number of consecutive errors was reached."
                 exit()
-
 
     def pull(self, bandit, sequence_n):
         return self.call("{}/{}".format(bandit, sequence_n))

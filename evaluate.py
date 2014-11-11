@@ -5,6 +5,7 @@ from python.algorithms.ucb.ucb2 import UCB2
 from python.algorithms.exp3.exp3 import Exp3
 from rpm import RPM
 from rpm import RPMTime
+from rpm import RPMAnnealing
 import sys
 import matplotlib.pyplot as plt
 
@@ -27,7 +28,9 @@ def evaluate(api, repeat=20):
         ('rpm', RPM([], [])),
         ('rpmTime: 0.1', RPMTime(int(api.pulls * 0.1))),
         ('rpmTime: 0.2', RPMTime(int(api.pulls * 0.2))),
-        ('rpmTime: 0.3', RPMTime(int(api.pulls * 0.3)))
+        ('rpmTime: 0.3', RPMTime(int(api.pulls * 0.3))),
+        ('rpmA 0.9999', RPMAnnealing(0.9999)),
+        ('rpmA 0.99999', RPMAnnealing(0.99999)),
     ]
 
     """
@@ -37,6 +40,15 @@ def evaluate(api, repeat=20):
         ('rpmTime: 0.15', RPMTime(int(api.pulls * 0.15))),
         ('rpmTime: 0.2', RPMTime(int(api.pulls * 0.2))),
         ('rpmTime: 0.3', RPMTime(int(api.pulls * 0.3)))
+    ]
+
+
+    algos = [
+        ('rpmA 0.9999', RPMAnnealing(0.9999)),
+        ('rpmA 0.99999', RPMAnnealing(0.99999)),
+        ('rpmA 0.999999', RPMAnnealing(0.999999)),
+        ('rpmA 0.999999999', RPMAnnealing(0.999999999)),
+
     ]
     """
     for name, algo in algos:

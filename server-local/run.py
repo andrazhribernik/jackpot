@@ -16,6 +16,7 @@ def machines(example):
             '7': '2',
             '8': '3',
             '9': '4',
+            '10': '10',
             }[example]
     except:
         return "ERR"
@@ -34,6 +35,7 @@ def pulls(example):
             '7': '15000',
             '8': '3000',
             '9': '30000',
+            '10': '30000',
         }[example]
     except:
         return "ERR"
@@ -82,13 +84,13 @@ def pull(example, bandit, sequence):
                 else "ERR",
             },
             '7': {
-                '1': ("1" if random.random() < 0.05 else "0") if 1 <= int(sequence) < 3000
-                else ("1" if random.random() < 0.035 else "0") if 3000 <= int(sequence) <= 12000
-                else ("1" if random.random() < 0.05 else "0") if 12000 <= int(sequence) <= 15000
+                '1': ("1" if random.random() < 0.03 else "0") if 1 <= int(sequence) < 3000
+                else ("1" if random.random() < 0.02 else "0") if 3000 <= int(sequence) <= 12000
+                else ("1" if random.random() < 0.03 else "0") if 12000 <= int(sequence) <= 15000
                 else "ERR",
-                '2': ("1" if random.random() < 0.025 else "0") if 1 <= int(sequence) < 3000
-                else ("1" if random.random() < 0.07 else "0") if 3000 <= int(sequence) <= 12000
-                else ("1" if random.random() < 0.025 else "0") if 12000 <= int(sequence) <= 15000
+                '2': ("1" if random.random() < 0.015 else "0") if 1 <= int(sequence) < 3000
+                else ("1" if random.random() < 0.04 else "0") if 3000 <= int(sequence) <= 12000
+                else ("1" if random.random() < 0.015 else "0") if 12000 <= int(sequence) <= 15000
                 else "ERR",
                 },
             '8': {
@@ -147,6 +149,46 @@ def pull(example, bandit, sequence):
                 else ("1" if random.random() < 0.02 else "0") if 29000 <= int(sequence) <= 30000
                 else "ERR",
                 '4': ("1" if random.random() < 0 else "0") if 1 <= int(sequence) <= 30000 else "ERR"
+            },
+            '10': {
+                '1': ("1" if random.random() < 0.01 else "0") if 1 <= int(sequence) < 6000
+                else ("1" if random.random() < 0.02 else "0") if 6000 <= int(sequence) <= 12000
+                else ("1" if random.random() < 0.01 else "0") if 12000 <= int(sequence) <= 30000
+                else "ERR",
+                '2': ("1" if random.random() < 0.01 else "0") if 1 <= int(sequence) < 6000
+                else ("1" if random.random() < 0.02 else "0") if 6000 <= int(sequence) <= 12000
+                else ("1" if random.random() < 0.01 else "0") if 12000 <= int(sequence) <= 30000
+                else "ERR",
+                '3': ("1" if random.random() < 0.01 else "0") if 1 <= int(sequence) < 6000
+                else ("1" if random.random() < 0.02 else "0") if 6000 <= int(sequence) <= 12000
+                else ("1" if random.random() < 0.01 else "0") if 12000 <= int(sequence) <= 30000
+                else "ERR",
+                '4': ("1" if random.random() < 0.01 else "0") if 1 <= int(sequence) < 6000
+                else ("1" if random.random() < 0.02 else "0") if 6000 <= int(sequence) <= 12000
+                else ("1" if random.random() < 0.01 else "0") if 12000 <= int(sequence) <= 30000
+                else "ERR",
+                '5': ("1" if random.random() < 0.01 else "0") if 1 <= int(sequence) < 12000
+                else ("1" if random.random() < 0.02 else "0") if 12000 <= int(sequence) <= 24000
+                else ("1" if random.random() < 0.01 else "0") if 24000 <= int(sequence) <= 30000
+                else "ERR",
+                '6': ("1" if random.random() < 0.01 else "0") if 1 <= int(sequence) < 12000
+                else ("1" if random.random() < 0.02 else "0") if 12000 <= int(sequence) <= 24000
+                else ("1" if random.random() < 0.01 else "0") if 24000 <= int(sequence) <= 30000
+                else "ERR",
+                '7': ("1" if random.random() < 0.01 else "0") if 1 <= int(sequence) < 12000
+                else ("1" if random.random() < 0.02 else "0") if 12000 <= int(sequence) <= 24000
+                else ("1" if random.random() < 0.01 else "0") if 24000 <= int(sequence) <= 30000
+                else "ERR",
+                '8': ("1" if random.random() < 0.01 else "0") if 1 <= int(sequence) < 24000
+                else ("1" if random.random() < 0.02 else "0") if 24000 <= int(sequence) <= 30000
+                else "ERR",
+                '9': ("1" if random.random() < 0.01 else "0") if 1 <= int(sequence) < 24000
+                else ("1" if random.random() < 0.02 else "0") if 24000 <= int(sequence) <= 30000
+                else "ERR",
+                '10': ("1" if random.random() < 0.01 else "0") if 1 <= int(sequence) < 24000
+                else ("1" if random.random() < 0.02 else "0") if 24000 <= int(sequence) <= 30000
+                else "ERR",
+
             }
 
         }[example][bandit]

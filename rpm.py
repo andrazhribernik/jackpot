@@ -31,6 +31,35 @@ class RPM():
         return
 
 
+class RPMAnnealing():
+    def __init__(self, annealing_factor, counts = [], values = []):
+        self.counts = counts
+        self.values = values
+        self.anneal_fac = annealing_factor
+        return
+
+    def initialize(self, n_arms):
+        self.counts = [0 for col in range(n_arms)]
+        self.values = [0 for col in range(n_arms)]
+        return
+
+    def select_arm(self):
+        n_arms = len(self.counts)
+        rpm_values = [0.0 for arm in range(n_arms)]
+        for arm in range(n_arms):
+            rpm_values[arm] = random.betavariate(self.values[arm] + 1, self.counts[arm] - self.values[arm] + 1)
+        return ind_max(rpm_values)
+
+    def update(self, chosen_arm, reward):
+        for arm in range(len(self.counts)):
+            self.counts[arm] *= self.anneal_fac
+            self.values[arm] *= self.anneal_fac
+
+        self.counts[chosen_arm] += 1
+        self.values[chosen_arm] += reward
+        return
+
+
 class RPMTime():
     def __init__(self, history):
         self.history = history
