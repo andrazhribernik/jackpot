@@ -17,6 +17,7 @@ def machines(example):
             '8': '3',
             '9': '4',
             '10': '10',
+            '11': '10',
             }[example]
     except:
         return "ERR"
@@ -36,6 +37,7 @@ def pulls(example):
             '8': '3000',
             '9': '30000',
             '10': '30000',
+            '11': '30000',
         }[example]
     except:
         return "ERR"
@@ -189,7 +191,20 @@ def pull(example, bandit, sequence):
                 else ("1" if random.random() < 0.02 else "0") if 24000 <= int(sequence) <= 30000
                 else "ERR",
 
-            }
+            },
+            '11': {
+                '1': ("1" if random.random() < 0.010420 else "0") if 1 <= int(sequence) <= 30000 else "ERR",
+                '2': ("1" if random.random() < 0.010300 else "0") if 1 <= int(sequence) <= 30000 else "ERR",
+                '3': ("1" if random.random() < 0.010020 else "0") if 1 <= int(sequence) <= 30000 else "ERR",
+                '4': ("1" if random.random() < 0.010260 else "0") if 1 <= int(sequence) <= 30000 else "ERR",
+                '5': ("1" if random.random() < 0.010540 else "0") if 1 <= int(sequence) <= 30000 else "ERR",
+                '6': ("1" if random.random() < 0.009480 else "0") if 1 <= int(sequence) <= 30000 else "ERR",
+                '7': ("1" if random.random() < 0.009360 else "0") if 1 <= int(sequence) <= 30000 else "ERR",
+                '8': ("1" if random.random() < 0.010180 else "0") if 1 <= int(sequence) <= 30000 else "ERR",
+                '9': ("1" if random.random() < 0.009520 else "0") if 1 <= int(sequence) <= 30000 else "ERR",
+                '10': ("1" if random.random() < 0.012880 else "0") if 1 <= int(sequence) <= 30000 else "ERR"
+            },
+
 
         }[example][bandit]
     except:
