@@ -1,17 +1,15 @@
 from api import JackpotApi
-from python.algorithms.epsilon_greedy.standard import EpsilonGreedy
-from python.algorithms.ucb.ucb1 import UCB1
-from python.algorithms.ucb.ucb2 import UCB2
-from rpm import RPM
-import analyzer
+from rpm import RPMTime
 import sys
 
 
 def simulate(api):
-    #algo = EpsilonGreedy(0.2, [], [])
-    #algo = UCB1([], [])
-    #algo = UCB2(0.1, [], [])
-    algo = RPM([], [])
+    """
+    Run the whole jackpot session for given api
+    :param api: JackpotApi instance
+    :return: reward obtained in whole session
+    """
+    algo = RPMTime(int(api.pulls * 0.2))
     algo.initialize(api.machines)
     arm_pulls = [0 for i in range(api.machines)]
     reward_sum = 0

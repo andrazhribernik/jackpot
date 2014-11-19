@@ -4,7 +4,11 @@ app = Flask(__name__)
 
 @app.route('/<example>/machines')
 def machines(example):
-    print example
+    """
+    Return number of machine for <example>
+    :param example: specified example number
+    :return:
+    """
     try:
         return {
             '1': '2',
@@ -24,7 +28,11 @@ def machines(example):
 
 @app.route('/<example>/pulls')
 def pulls(example):
-    print example
+    """
+    Return length of session for specified <example>
+    :param example: specified example number
+    :return:
+    """
     try:
         return {
             '1': '500',
@@ -44,6 +52,13 @@ def pulls(example):
 
 @app.route('/<example>/<bandit>/<sequence>')
 def pull(example, bandit, sequence):
+    """
+    Return reward for given example, arm and session sequence
+    :param example:
+    :param bandit:
+    :param sequence:
+    :return:
+    """
     try:
         return {
             '1': {

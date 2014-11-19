@@ -2,11 +2,17 @@ from api import JackpotApi
 import matplotlib.pyplot as plt
 import sys
 
-REPEAT = 3000
 REPEAT_CONSTANT = 50000
 
 
 def analyse(api, interval=1000, repeat=1000):
+    """
+    Analyse non-constant slot machines session. Pull every arm :repeat times to get CTR of arm
+    on every sequence number, which is divided by :interval.
+    :param api: JackpotAPI instance
+    :param interval:
+    :param repeat:
+    """
     machines = []
     for machine in range(api.machines):
         results = []
@@ -21,10 +27,10 @@ def analyse(api, interval=1000, repeat=1000):
 
     results = "%s / %d / %d \n" % (api.url, interval, repeat)
     for i, m in enumerate(machines):
-        #plt.plot(range(0, api.pulls, interval), m, label="machine %d" % (i + 1))
+        plt.plot(range(0, api.pulls, interval), m, label="machine %d" % (i + 1))
         results += str(m) + "\n"
-    #plt.legend(loc=2)
-    #plt.show()
+    plt.legend(loc=2)
+    plt.show()
     f = open(api.url.replace('http://', '').replace('/','-'), "w")
     f.write(results)
     f.close()
@@ -32,6 +38,10 @@ def analyse(api, interval=1000, repeat=1000):
 
 
 def analyse_constant(api):
+    """
+    Pull every arm REPEAT_CONSTANT times to obtain arms' CTR
+    :param api:
+    """
     for machine in range(api.machines):
         success = 0
         for i in range(REPEAT_CONSTANT):

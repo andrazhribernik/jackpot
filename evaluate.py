@@ -11,10 +11,12 @@ import matplotlib.pyplot as plt
 
 
 def evaluate(api, repeat=20):
-    #algo = EpsilonGreedy(0.2, [], [])
-    #algo = UCB1([], [])
-    #algo = UCB2(0.1, [], [])
-    #algo = RPM([], [])
+    """
+    Evaluate different MAB algorithms and repeat every algorithm for :repeat times to get higher confidence in
+    MAB algorithm performances
+    :param api: JackpotApi instance
+    :param repeat: Repeat given :api session for :repeat times
+    """
     print "repeat: "+str(repeat)
     algos = [
         ('usb1', UCB1([], [])),
@@ -31,26 +33,10 @@ def evaluate(api, repeat=20):
         ('rpmTime: 0.3', RPMTime(int(api.pulls * 0.3))),
         ('rpmA 0.9999', RPMAnnealing(0.9999)),
         ('rpmA 0.99999', RPMAnnealing(0.99999)),
-    ]
-
-    """
-    algos = [
-        ('rpm', RPM([], [])),
-        ('rpmTime: 0.1', RPMTime(int(api.pulls * 0.1))),
-        ('rpmTime: 0.15', RPMTime(int(api.pulls * 0.15))),
-        ('rpmTime: 0.2', RPMTime(int(api.pulls * 0.2))),
-        ('rpmTime: 0.3', RPMTime(int(api.pulls * 0.3)))
-    ]
-
-
-    algos = [
-        ('rpmA 0.9999', RPMAnnealing(0.9999)),
-        ('rpmA 0.99999', RPMAnnealing(0.99999)),
         ('rpmA 0.999999', RPMAnnealing(0.999999)),
         ('rpmA 0.999999999', RPMAnnealing(0.999999999)),
-
     ]
-    """
+
     for name, algo in algos:
         reward_sum = 0
         for r in range(repeat):
@@ -70,6 +56,12 @@ def evaluate(api, repeat=20):
 
 
 def plot_dist(api, interval=100):
+    """
+    Plot arms distribution for given api in different times of session. These plots helps us to compare
+    MAB algorithms between each other and with target arms distribution.
+    :param api: JackpotApi instance
+    :param interval: Plot interval...we do not need to plot arms distribution in every step of session
+    """
     algos = [
         ('usb1', UCB1([], [])),
         ('ucb2 a=0.05', UCB2(0.05, [], [])),
@@ -82,13 +74,11 @@ def plot_dist(api, interval=100):
         ('rpm', RPM([], [])),
         ('rpmTime: 0.1', RPMTime(int(api.pulls * 0.1))),
         ('rpmTime: 0.2', RPMTime(int(api.pulls * 0.2))),
-        ('rpmTime: 0.3', RPMTime(int(api.pulls * 0.3)))
-    ]
-
-    algos = [
-        #('rpmTime: 0.1', RPMTime(int(api.pulls * 0.1))),
-        #('rpmTime: 0.2', RPMTime(int(api.pulls * 0.2))),
-        ('rpmTime: 0.3', RPMTime(int(api.pulls * 0.3)))
+        ('rpmTime: 0.3', RPMTime(int(api.pulls * 0.3))),
+        ('rpmA 0.9999', RPMAnnealing(0.9999)),
+        ('rpmA 0.99999', RPMAnnealing(0.99999)),
+        ('rpmA 0.999999', RPMAnnealing(0.999999)),
+        ('rpmA 0.999999999', RPMAnnealing(0.999999999)),
     ]
 
     for name, algo in algos:
