@@ -42,6 +42,7 @@ Development Requirements
 ========================
 We have used some external libraries during development phase. You should be able to run all scripts in this
  repository by following these two steps.
+
 1. Install python 2.7 & pip
 2. Run command
 ```
