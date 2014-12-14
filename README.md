@@ -3,7 +3,8 @@ jackpot - How much money does you algorithm make?
 
 This is a solution for Celtra challenge. The goal is to write an algorithm, which could autonomously
 select the most rewarding slot machine. Game settings are very easy. User has limited number of pulls and
-he should select the most rewarding slot machine to maximise his profit.
+he should select the most rewarding slot machine to maximise his profit. Research process and results are
+described in this presentation (http://bit.ly/1G7tO1G).
 
 Run an algorithm
 ================
